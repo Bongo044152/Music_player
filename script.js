@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let audios = document.querySelectorAll("audio");
         let progress = document.querySelectorAll('#player_container input[type="range"]');
         let play_btn = document.querySelectorAll('#btn');
+        let repeat_buts = document.querySelectorAll("#repeat-button");
 
         for (let i = 0; i < audios.length; i++) {
             audios[i].onloadedmetadata = () => {
@@ -130,6 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // 更新进度条
                 audios[i].ontimeupdate = () => {
                     progress[i].value = audios[i].currentTime;
+                    if(audios[i].currentTime >= audios[i].duration && !repeat_buts[i].classList.contains("clicked")){
+                        audios[i].currentTime = 0;
+                        audios[i].play();
+                    }
                 };
 
                 // 进度条拖动事件
@@ -171,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 前後事件
         document.querySelectorAll("#player_box").forEach( e => {
             e.querySelector('ion-icon[name="play-back-circle-outline"]').addEventListener("click", () => {
+                $items[display].querySelector("#repeat-button").classList.add("clicked");
                 display -= 1;
                 if(display < 0){
                     display = $items.length -1;
@@ -180,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 set_opticaly(display, $items)
             })
             e.querySelector('ion-icon[name="play-forward-circle-outline"]').addEventListener("click", () => {
+                $items[display].querySelector("#repeat-button").classList.add("clicked");
                 display = (display + 1) % $items.length;
                 setZIndex(display, $items)
                 Remove_x(display, $items)
@@ -207,4 +214,21 @@ document.addEventListener("DOMContentLoaded", () => {
             img.addEventListener('mouseleave', () => toggleActiveState(img, icon, false));
             icon.addEventListener('mouseleave', () => toggleActiveState(img, icon, false));
         });
+
+
+        // Repeat
+        repeat_buts.forEach( repeat_but => {
+            repeat_but.addEventListener("click", (e)=>{
+                if(repeat_but.classList.contains("clicked")){
+                    repeat_but.classList.remove("clicked");
+                    let audio = $items[display].querySelector("audio");
+                    if(audio.currentTime >= audio.duration){
+                        $items[display].querySelector("#btn").click();
+                    }
+                }
+                else{
+                    repeat_but.classList.add("clicked");
+                }
+            })
+        })
 });
