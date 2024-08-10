@@ -1,0 +1,152 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html{
+    font-size: 120%;
+}
+
+img{
+    height: 300px;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* background: linear-gradient(135deg, #5f7eff, #7b7bfe, #61ffaf); */
+    background-image: url(./bac.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#player_container {
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#player_box {
+    /* 所有圖片固定 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: var(--z_index);
+    overflow: hidden;
+    /* 設定 */
+    --width: 400px;
+    --height: 500px;
+    width: var(--width);
+    height: var(--height);
+
+    /* 內文定位 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+
+    /* 致中 並 remove */
+    transform: translateY(-50%) translateX(calc(-50% + var(--remove_x)));
+    animation: move .5s ease;
+
+    /* background: linear-gradient(135deg, #ff7e5f, #feb47b, #ff6f61); */
+    background:  linear-gradient(135deg, #5f7eff, #7b7bfe, #61ffaf);
+    padding: 1rem;
+    padding-bottom: 0.2rem;
+
+    /* 圓角 */
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes move {
+    from {
+        transform: translateY(-50%) translateX(calc(-50% + var(--pre)));
+    }
+    to {
+        transform: translateY(-50%) translateX(calc(-50% + var(--remove_x)));
+    }
+}
+
+audio {
+    margin: 10px 0;   /* 上下外邊距，用來分隔音頻控件和其他內容 */
+}
+
+img{
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 5px;
+    /* 重點 */ 
+    object-fit: cover;
+}
+img.active{
+    filter: brightness(0.5);
+    transition: filter 0.3s ease;
+}
+
+#player_box a{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#player_box ion-icon[name = "logo-youtube"]{
+    position: absolute;
+    z-index: 100;
+    font-size: 3rem;
+    color: red;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+#player_box ion-icon[name = "logo-youtube"].active{
+    opacity: 1;
+}
+
+#progress{
+    margin: .3em 0;
+    -webkit-appearance: none;
+    width: 90%;
+    height: 6px;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22);
+}
+
+#player_control{
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    width: 100%;
+}
+#player_control ion-icon{
+    margin: 0 0 1rem 0;
+    font-size: 2.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0 0.2em;
+}
+
+audio{
+    display: none;
+}

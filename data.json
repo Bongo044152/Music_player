@@ -1,0 +1,20 @@
+[
+    {"id":0,
+    "link":"https://www.youtube.com/watch?v=nfs8NYg7yQM&list=RD0-7IHOXkiV8",
+    "name":"Charlie Puth - Attention",
+    "mp3":".\\mp3\\Charlie Puth - Attention.mp3",
+    "img":".\\image\\Charlie Puth - Attention.jpg"
+    },
+    {"id":1,
+    "link":"https://www.youtube.com/watch?v=Vk5-c_v4gMU&list=RD0-7IHOXkiV8",
+    "name":"ILLIT (아일릿) ‘Magnetic’",
+    "mp3":".\\mp3\\ILLIT (아일릿) ‘Magnetic’.mp3",
+    "img":".\\image\\ILLIT (아일릿) ‘Magnetic’.jpg"
+    },
+    {"id":2,
+    "link":"https://www.youtube.com/watch?v=0-7IHOXkiV8&list=RD0-7IHOXkiV8",
+    "name":"KALEO - Way Down We Go",
+    "mp3":".\\mp3\\KALEO - Way Down We Go.mp3",
+    "img":".\\image\\KALEO - Way Down We Go.jpg"
+    }
+]
