@@ -41,6 +41,7 @@ body{
     left: 50%;
     z-index: var(--z_index);
     overflow: hidden;
+
     /* 設定 */
     --width: 400px;
     --height: 500px;
@@ -122,7 +123,6 @@ img.active{
     cursor: pointer;
     border-radius: 5px;
 }
-
 #progress::-webkit-slider-thumb{
     -webkit-appearance: none;
     background-color: blue;
